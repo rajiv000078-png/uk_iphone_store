@@ -1,0 +1,42 @@
+<option>iPhone 16 Pro</option>
+<option>Samsung Phone</option>
+<option>Google Pixel</option>
+</select>
+
+<button onclick="placeOrder()">Place Order</button>
+
+<p id="result"></p>
+</div>
+
+</div>
+
+<footer>
+© 2026 Dhiraj Mobile Store
+</footer>
+
+<script>
+function selectPhone(phone){
+  document.getElementById("product").value=phone;
+  document.getElementById("name").focus();
+}
+
+function placeOrder(){
+  let name=document.getElementById("name").value;
+  let phone=document.getElementById("phone").value;
+  let address=document.getElementById("address").value;
+  let product=document.getElementById("product").value;
+
+  if(!name  !phone  !address || product=="Phone चुनें"){
+    document.getElementById("result").innerText=
+    "⚠️ कृपया सभी जानकारी भरें।";
+    return;
+  }
+
+  document.getElementById("result").innerText=
+  "✅ Order request तैयार है! Product: "+product+
+  " | Customer: "+name;
+}
+</script>
+
+</body>
+</html>
