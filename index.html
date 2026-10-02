@@ -1,102 +1,85 @@
-<p class="price">₹8,500</p>
-<select>
-<option>Black</option>
-<option>Blue</option>
-<option>White</option>
-</select>
-<button onclick="selectProduct('iPhone 17')">Order Now</button>
+<span class="dot" style="background:#6aa8d8"></span>
+    <span class="dot" style="background:#e8a7b8"></span>
+  </div>
+  <div class="price">${p[1]}</div>
+  <button onclick="addCart('${p[0]}')">View Details →</button>
 </div>
-
-<div class="card">
-<div class="phone-img">📱</div>
-<h3>iPhone 17 Pro</h3>
-<p class="price">₹9,000</p>
-<select>
-<option>Black</option>
-<option>Silver</option>
-<option>Gold</option>
-</select>
-<button onclick="selectProduct('iPhone 17 Pro')">Order Now</button>
-</div>
+`);
+});
+</script>
 
 </div>
 
-<h2 class="section-title">🤖 Android</h2>
+<section id="android">
+<h2 class="title" style="margin-top:35px">🤖 Android Phones</h2>
 
 <div class="products">
 
 <div class="card">
-<div class="phone-img">📱</div>
+<div class="photo">📱</div>
 <h3>Samsung Galaxy</h3>
-<p class="price">₹2,500</p>
-<select>
-<option>Black</option>
-<option>Blue</option>
-<option>White</option>
-</select>
-<button onclick="selectProduct('Samsung Galaxy')">Order Now</button>
+<div class="spec">Premium Android Smartphone</div>
+<div class="price">₹2,500 - ₹7,000</div>
+<button onclick="addCart('Samsung Galaxy')">View Details →</button>
 </div>
 
 <div class="card">
-<div class="phone-img">📱</div>
+<div class="photo">📱</div>
 <h3>Google Pixel</h3>
-<p class="price">₹7,000</p>
-<select>
-<option>Black</option>
-<option>Blue</option>
-<option>White</option>
-</select>
-<button onclick="selectProduct('Google Pixel')">Order Now</button>
+<div class="spec">Google Pixel Smartphone</div>
+<div class="price">₹2,500 - ₹7,000</div>
+<button onclick="addCart('Google Pixel')">View Details →</button>
 </div>
 
 </div>
+</section>
 
-<div class="order-box">
+<div class="order">
 <h2>📦 Place Order</h2>
 
-<input id="name" type="text" placeholder="Your Name">
-<input id="phone" type="tel" placeholder="Mobile Number">
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Mobile Number">
+<input id="product" placeholder="Selected Mobile">
 <textarea id="address" placeholder="Delivery Address"></textarea>
-<input id="product" type="text" placeholder="Selected Mobile">
 
 <button onclick="placeOrder()">Submit Order</button>
 
-<p id="message" style="margin-top:15px;"></p>
+<p id="msg" style="margin-top:12px"></p>
 </div>
 
-</div>
+</main>
 
 <footer>
-© 2026 Dhiraj Mobile Shop
+© 2026 Dhiraj Mobile Shop • All Rights Reserved
 </footer>
 
 <script>
+let cart=0;
 
-function selectProduct(name){
-  document.getElementById("product").value=name;
-  document.getElementById("name").scrollIntoView({
+function addCart(product){
+  cart++;
+  document.getElementById("count").innerText=cart;
+  document.getElementById("product").value=product;
+  document.getElementById("product").scrollIntoView({
     behavior:"smooth"
   });
 }
 
 function placeOrder(){
-
   let name=document.getElementById("name").value;
   let phone=document.getElementById("phone").value;
-  let address=document.getElementById("address").value;
   let product=document.getElementById("product").value;
+  let address=document.getElementById("address").value;
 
-  if(!name  !phone  !address || !product){
-    document.getElementById("message").innerText=
-    "Please fill all details.";
+  if(!name  !phone  !product || !address){
+    document.getElementById("msg").innerText=
+    "⚠️ Please fill all details.";
     return;
   }
 
-  document.getElementById("message").innerText=
-  "✅ Order request submitted successfully!";
-
+  document.getElementById("msg").innerText=
+  "✅ Order request submitted!";
 }
-
 </script>
 
 </body>
