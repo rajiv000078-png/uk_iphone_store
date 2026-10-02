@@ -1,41 +1,102 @@
-<option>iPhone 16 Pro</option>
-<option>Samsung Phone</option>
-<option>Google Pixel</option>
+<p class="price">₹8,500</p>
+<select>
+<option>Black</option>
+<option>Blue</option>
+<option>White</option>
 </select>
+<button onclick="selectProduct('iPhone 17')">Order Now</button>
+</div>
 
-<button onclick="placeOrder()">Place Order</button>
+<div class="card">
+<div class="phone-img">📱</div>
+<h3>iPhone 17 Pro</h3>
+<p class="price">₹9,000</p>
+<select>
+<option>Black</option>
+<option>Silver</option>
+<option>Gold</option>
+</select>
+<button onclick="selectProduct('iPhone 17 Pro')">Order Now</button>
+</div>
 
-<p id="result"></p>
+</div>
+
+<h2 class="section-title">🤖 Android</h2>
+
+<div class="products">
+
+<div class="card">
+<div class="phone-img">📱</div>
+<h3>Samsung Galaxy</h3>
+<p class="price">₹2,500</p>
+<select>
+<option>Black</option>
+<option>Blue</option>
+<option>White</option>
+</select>
+<button onclick="selectProduct('Samsung Galaxy')">Order Now</button>
+</div>
+
+<div class="card">
+<div class="phone-img">📱</div>
+<h3>Google Pixel</h3>
+<p class="price">₹7,000</p>
+<select>
+<option>Black</option>
+<option>Blue</option>
+<option>White</option>
+</select>
+<button onclick="selectProduct('Google Pixel')">Order Now</button>
+</div>
+
+</div>
+
+<div class="order-box">
+<h2>📦 Place Order</h2>
+
+<input id="name" type="text" placeholder="Your Name">
+<input id="phone" type="tel" placeholder="Mobile Number">
+<textarea id="address" placeholder="Delivery Address"></textarea>
+<input id="product" type="text" placeholder="Selected Mobile">
+
+<button onclick="placeOrder()">Submit Order</button>
+
+<p id="message" style="margin-top:15px;"></p>
 </div>
 
 </div>
 
 <footer>
-© 2026 Dhiraj Mobile Store
+© 2026 Dhiraj Mobile Shop
 </footer>
 
 <script>
-function selectPhone(phone){
-  document.getElementById("product").value=phone;
-  document.getElementById("name").focus();
+
+function selectProduct(name){
+  document.getElementById("product").value=name;
+  document.getElementById("name").scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
 function placeOrder(){
+
   let name=document.getElementById("name").value;
   let phone=document.getElementById("phone").value;
   let address=document.getElementById("address").value;
   let product=document.getElementById("product").value;
 
-  if(!name  !phone  !address || product=="Phone चुनें"){
-    document.getElementById("result").innerText=
-    "⚠️ कृपया सभी जानकारी भरें।";
+  if(!name  !phone  !address || !product){
+    document.getElementById("message").innerText=
+    "Please fill all details.";
     return;
   }
 
-  document.getElementById("result").innerText=
-  "✅ Order request तैयार है! Product: "+product+
-  " | Customer: "+name;
+  document.getElementById("message").innerText=
+  "✅ Order request submitted successfully!";
+
 }
+
 </script>
 
 </body>
